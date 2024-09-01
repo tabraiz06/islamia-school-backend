@@ -6,4 +6,4 @@
     }
 ]
 
- ,"routes": [{ "source": "/(.*)", "destination": "/api" }] }
+ ,"routes": [{ "source": "/(.*)", "destination": "/" }] }
