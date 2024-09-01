@@ -61,7 +61,7 @@ router.get("/allresults", async (req, res) => {
 // find result on class basis
 router.post("/result", async (req, res) => {
   const { className, examSession } = req.body;
-  console.log(req.body);
+
   try {
     if (!className && !examSession) {
       res
@@ -69,7 +69,7 @@ router.post("/result", async (req, res) => {
         .json({ message: "please provide class name and exam session" });
     } else {
       const result = await Class.find({ className, examSession });
-      console.log(result);
+     
       if (result) {
         res.status(200).json(result);
       }
@@ -89,7 +89,7 @@ router.put("/result/:id", async (req, res) => {
     totalMarks,
     result,
   } = req.body;
-  console.log(req.body);
+
   try {
     const singleStudent = await Class.findByIdAndUpdate(
       { _id: req.params.id },
@@ -117,13 +117,13 @@ router.post("/singleresult", async (req, res) => {
     className,
     examSession,
   } = req.body;
-  console.log(req.body);
+ 
   try {
     const singleStudentResult = await Class.findOne({
       studentRollNumber,
       examSession
     });
-    console.log(singleStudentResult);
+  
     if (
       singleStudentResult.studentName !== studentName ||
       singleStudentResult.studentFatherName !== studentFatherName ||
@@ -131,7 +131,7 @@ router.post("/singleresult", async (req, res) => {
     ) {
       res.status(400).json({ message: "invalid data" });
     } else {
-      console.log(singleStudentResult);
+      
       res.status(200).json(singleStudentResult);
     }
   } catch (error) {
