@@ -123,8 +123,11 @@ router.post("/singleresult", async (req, res) => {
       studentRollNumber,
       examSession
     });
+    if(!singleStudentResult){
+      res.status(400).json({message:"unable to find result. Please check the details"})
+    }
   
-    if (
+   else if (
       singleStudentResult.studentName !== studentName ||
       singleStudentResult.studentFatherName !== studentFatherName ||
       singleStudentResult.className !== className
